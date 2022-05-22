@@ -3,6 +3,7 @@ import http from 'http';
 import mongoose from 'mongoose';
 import { config } from './config/config';
 import Logging from './library/Logging';
+import restauracjaRoutes from './routes/Restauracja';
 
 const router = express();
 
@@ -44,7 +45,7 @@ const StartServer=()=>{
     });
 
     /** ROUTES */
-
+    router.use('/restauracje',restauracjaRoutes);
     /**PING */
     router.get('/ping',(req,res,next)=>res.status(200).json({message:'pong'}));
 
