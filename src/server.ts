@@ -5,6 +5,7 @@ import { config } from './config/config';
 import Logging from './library/Logging';
 import restauracjaRoutes from './routes/Restauracja';
 import pracownikRoutes from './routes/Pracownik';
+import stolikRoutes from './routes/Stolik';
 
 const router = express();
 
@@ -46,6 +47,7 @@ const StartServer=()=>{
     });
 
     /** ROUTES */
+    router.use('/stoliki',stolikRoutes);
     router.use('/restauracje',restauracjaRoutes);
     router.use('/pracownicy',pracownikRoutes);
     /**PING */
