@@ -6,6 +6,7 @@ import Logging from './library/Logging';
 import restauracjaRoutes from './routes/Restauracja';
 import pracownikRoutes from './routes/Pracownik';
 import stolikRoutes from './routes/Stolik';
+import rezerwacjaRoutes from './routes/Rezerwacja';
 
 const router = express();
 
@@ -50,6 +51,7 @@ const StartServer=()=>{
     router.use('/stoliki',stolikRoutes);
     router.use('/restauracje',restauracjaRoutes);
     router.use('/pracownicy',pracownikRoutes);
+    router.use('/rezerwacje',rezerwacjaRoutes);
     /**PING */
     router.get('/ping',(req,res,next)=>res.status(200).json({message:'pong'}));
 

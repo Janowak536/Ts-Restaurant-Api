@@ -18,4 +18,4 @@ const StolikSchema:Schema = new Schema(
     }
 );
 
-export default mongoose.model<IStolikModel>('stolik',StolikSchema);
+export default mongoose.model<IStolikModel>('Stolik',StolikSchema);

@@ -24,4 +24,4 @@ const RestauracjaSchema:Schema = new Schema(
     }
 );
 
-export default mongoose.model<IRestauracjaModel>('restauracja',RestauracjaSchema);
+export default mongoose.model<IRestauracjaModel>('Restauracja',RestauracjaSchema);
