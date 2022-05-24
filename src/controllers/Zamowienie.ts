@@ -18,13 +18,13 @@ const createZamowienie = (req: Request, res: Response, next: NextFunction) => {
 const readZamowienie = (req: Request, res: Response, next: NextFunction) => {
     const zamowienieId = req.params.zamowienieId;
 
-    return Zamowienie.findById(zamowienieId)
+    return Zamowienie.findById(zamowienieId).populate(['pracownik','stolik'])
         .then((zamowienie) => (zamowienie ? res.status(200).json({ zamowienie }) : res.status(404).json({ message: 'Not found' })))
         .catch((error) => res.status(500).json({ error }));
 };
 
 const readAll = (req: Request, res: Response, next: NextFunction) => {
-    return Zamowienie.find()
+    return Zamowienie.find().populate(['pracownik','stolik'])
         .then((zamowienie) => res.status(200).json({ zamowienie }))
         .catch((error) => res.status(500).json({ error }));
 };
