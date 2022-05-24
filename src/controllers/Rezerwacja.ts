@@ -4,10 +4,13 @@ import Rezerwacja from '../models/Rezerwacja';
 
 const createRezerwacja = (req: Request, res: Response, next: NextFunction) => {
     const { stolik,start,koniec,klient } = req.body;
-
+    
     const rezerwacja = new Rezerwacja({
         _id: new mongoose.Types.ObjectId(),
-        stolik,start,koniec,klient
+        stolik,
+        start,
+        koniec,
+        klient
     });
     return rezerwacja
         .save()
@@ -25,7 +28,7 @@ const readRezerwacja = (req: Request, res: Response, next: NextFunction) => {
 
 const readAll = (req: Request, res: Response, next: NextFunction) => {
     return Rezerwacja.find().populate('stolik')
-        .then((rezerwacjas) => res.status(200).json({ rezerwacjas }))
+        .then((rezerwacja) => res.status(200).json({ rezerwacja }))
         .catch((error) => res.status(500).json({ error }));
 };
 const updateRezerwacja = (req: Request, res: Response, next: NextFunction) => {

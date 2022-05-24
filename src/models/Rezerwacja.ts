@@ -11,8 +11,8 @@ export interface IRezerwacjaModel extends IRezerwacja,Document{}
 const RezerwacjaSchema:Schema = new Schema(
     {
         stolik:{type:Schema.Types.ObjectId,required:true,ref:'Stolik'},
-        start:{ type: String, required: true },
-        koniec:{ type: String, required: true },
+        start:{ type: Date, required: true },
+        koniec:{ type: Date, required: true },
         klient:{ type: String, required: true }
     },
     {

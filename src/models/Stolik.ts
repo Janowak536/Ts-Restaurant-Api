@@ -11,7 +11,7 @@ const StolikSchema:Schema = new Schema(
     {
         nazwa:{type:Number,required:true},
         iloscOsob:{type:Number,required:false},
-        status:{type:Boolean,required:true}
+        status:{type:String,enum:["Wolny","Zajęty"],default:"Wolny"}
     },
     {
         versionKey:false

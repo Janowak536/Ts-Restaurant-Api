@@ -22,6 +22,11 @@ const readStolik = (req: Request, res: Response, next: NextFunction) => {
         .then((stolik) => (stolik ? res.status(200).json({ stolik }) : res.status(404).json({ message: 'Not found' })))
         .catch((error) => res.status(500).json({ error }));
 };
+const readWolneStoliki = (req: Request, res: Response, next: NextFunction) => {
+    return Stolik.find({status:"Wolny"})
+        .then((stoliki) => res.status(200).json({ stoliki }))
+        .catch((error) => res.status(500).json({ error }));
+};
 
 const readAll = (req: Request, res: Response, next: NextFunction) => {
     return Stolik.find()
@@ -54,4 +59,4 @@ const deleteStolik = (req: Request, res: Response, next: NextFunction) => {
         .catch((error) => res.status(500).json({ error }));
 };
 
-export default { createStolik, readStolik, readAll, updateStolik, deleteStolik };
+export default { createStolik, readStolik,readWolneStoliki, readAll, updateStolik, deleteStolik };
