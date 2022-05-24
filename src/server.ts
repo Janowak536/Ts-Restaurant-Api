@@ -8,6 +8,7 @@ import pracownikRoutes from './routes/Pracownik';
 import stolikRoutes from './routes/Stolik';
 import rezerwacjaRoutes from './routes/Rezerwacja';
 import produktRoutes from './routes/Produkt';
+import danieRoutes from './routes/Danie';
 
 const router = express();
 
@@ -55,6 +56,7 @@ const StartServer=()=>{
     router.use('/pracownicy',pracownikRoutes);
     router.use('/rezerwacje',rezerwacjaRoutes);
     router.use('/produkty',produktRoutes);
+    router.use('/dania',danieRoutes);
 
 
     /**PING */
