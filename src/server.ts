@@ -7,6 +7,7 @@ import restauracjaRoutes from './routes/Restauracja';
 import pracownikRoutes from './routes/Pracownik';
 import stolikRoutes from './routes/Stolik';
 import rezerwacjaRoutes from './routes/Rezerwacja';
+import produktRoutes from './routes/Produkt';
 
 const router = express();
 
@@ -48,14 +49,20 @@ const StartServer=()=>{
     });
 
     /** ROUTES */
+
     router.use('/stoliki',stolikRoutes);
     router.use('/restauracje',restauracjaRoutes);
     router.use('/pracownicy',pracownikRoutes);
     router.use('/rezerwacje',rezerwacjaRoutes);
+    router.use('/produkty',produktRoutes);
+
+
     /**PING */
+
     router.get('/ping',(req,res,next)=>res.status(200).json({message:'pong'}));
 
     /**ERROR HANDLING */
+
     router.use((req,res,next)=>{
         const error = new Error('not found');
         Logging.error(error);
