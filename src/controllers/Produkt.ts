@@ -28,6 +28,13 @@ const readAll = (req: Request, res: Response, next: NextFunction) => {
         .then((produkt) => res.status(200).json({ produkt }))
         .catch((error) => res.status(500).json({ error }));
 };
+
+const readAllButSorted = (req: Request, res: Response, next: NextFunction) => {
+    return Produkt.find().sort('nazwa')
+        .then((produkt) => res.status(200).json({ produkt }))
+        .catch((error) => res.status(500).json({ error }));
+};
+
 const updateProdukt = (req: Request, res: Response, next: NextFunction) => {
     const produktId = req.params.produktId;
 
@@ -54,4 +61,4 @@ const deleteProdukt = (req: Request, res: Response, next: NextFunction) => {
         .catch((error) => res.status(500).json({ error }));
 };
 
-export default { createProdukt, readProdukt, readAll, updateProdukt, deleteProdukt };
+export default { createProdukt, readProdukt, readAll,readAllButSorted ,updateProdukt, deleteProdukt };

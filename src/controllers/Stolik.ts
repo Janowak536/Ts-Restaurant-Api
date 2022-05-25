@@ -28,6 +28,13 @@ const readWolneStoliki = (req: Request, res: Response, next: NextFunction) => {
         .catch((error) => res.status(500).json({ error }));
 };
 
+const readWolneStolikiLiczbaOsob= (req: Request, res: Response, next: NextFunction) => {
+    const iloscOsob = req.params.iloscOsob;
+    return Stolik.find({status:"Wolny",iloscOsob:iloscOsob})
+        .then((stoliki) => res.status(200).json({ stoliki }))
+        .catch((error) => res.status(500).json({ error }));
+};
+
 const readAll = (req: Request, res: Response, next: NextFunction) => {
     return Stolik.find()
         .then((stoliki) => res.status(200).json({ stoliki }))
@@ -59,4 +66,4 @@ const deleteStolik = (req: Request, res: Response, next: NextFunction) => {
         .catch((error) => res.status(500).json({ error }));
 };
 
-export default { createStolik, readStolik,readWolneStoliki, readAll, updateStolik, deleteStolik };
+export default { createStolik, readStolik,readWolneStoliki,readWolneStolikiLiczbaOsob, readAll, updateStolik, deleteStolik };
