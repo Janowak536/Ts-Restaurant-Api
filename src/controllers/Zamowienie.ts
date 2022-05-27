@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import Zamowienie from '../models/Zamowienie';
+import Pracownik from './Pracownik';
+import Restauracja from './Restauracja';
 
 const createZamowienie = (req: Request, res: Response, next: NextFunction) => {
     const { pracownik,dania,status,stolik,kwota } = req.body;
@@ -28,6 +30,15 @@ const readAll = (req: Request, res: Response, next: NextFunction) => {
         .then((zamowienie) => res.status(200).json({ zamowienie }))
         .catch((error) => res.status(500).json({ error }));
 };
+
+const readPracownikId = (req: Request, res: Response, next: NextFunction)=>{
+    const pracownikId = req.params.pracownikId;
+
+
+    return Zamowienie.find().where(pracownikId)
+        .then((zamowienie) => (zamowienie ? res.status(200).json({ zamowienie }) : res.status(404).json({ message: 'Not found' })))
+        .catch((error) => res.status(500).json({ error }));
+}
 const updateZamowienie = (req: Request, res: Response, next: NextFunction) => {
     const zamowienieId = req.params.zamowienieId;
 
@@ -54,4 +65,4 @@ const deleteZamowienie = (req: Request, res: Response, next: NextFunction) => {
         .catch((error) => res.status(500).json({ error }));
 };
 
-export default { createZamowienie, readZamowienie, readAll, updateZamowienie, deleteZamowienie };
+export default { createZamowienie, readZamowienie, readAll,readPracownikId, updateZamowienie, deleteZamowienie };
