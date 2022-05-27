@@ -3,8 +3,8 @@ import mongoose,{Document,Schema} from 'mongoose';
 export interface IRestauracja{
     nazwa:string;
     adres:string;
-    telefon:number;
-    nip:number;
+    telefon:string;
+    nip:string;
     email:string;
     www:string;
 }
@@ -14,8 +14,8 @@ const RestauracjaSchema:Schema = new Schema(
     {
         nazwa:{type:String,required:true},
         adres:{type:String,required:true},
-        telefon:{type:Number,required:true},
-        nip:{type:Number,required:true},
+        telefon:{type:String,required:true},
+        nip:{type:String,required:true},
         email:{type:String,required:true},
         www:{type:String,required:false}
     },

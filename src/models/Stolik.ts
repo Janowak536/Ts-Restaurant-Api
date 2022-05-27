@@ -3,7 +3,7 @@ import mongoose,{Document,Schema} from 'mongoose';
 export interface IStolik{
     nazwa:number;
     iloscOsob:number;
-    status:boolean;
+    status:string;
 }
 export interface IStolikModel extends IStolik,Document{}
 
