@@ -31,9 +31,16 @@ const readAll = (req: Request, res: Response, next: NextFunction) => {
         .catch((error) => res.status(500).json({ error }));
 };
 
+const readStolikId = (req: Request, res: Response, next: NextFunction)=>{
+    const stolikId = req.params.stolikId;
+
+    return Zamowienie.find().where(stolikId)
+        .then((zamowienie) => (zamowienie ? res.status(200).json({ zamowienie }) : res.status(404).json({ message: 'Not found' })))
+        .catch((error) => res.status(500).json({ error }));
+}
+
 const readPracownikId = (req: Request, res: Response, next: NextFunction)=>{
     const pracownikId = req.params.pracownikId;
-
 
     return Zamowienie.find().where(pracownikId)
         .then((zamowienie) => (zamowienie ? res.status(200).json({ zamowienie }) : res.status(404).json({ message: 'Not found' })))
@@ -65,4 +72,4 @@ const deleteZamowienie = (req: Request, res: Response, next: NextFunction) => {
         .catch((error) => res.status(500).json({ error }));
 };
 
-export default { createZamowienie, readZamowienie, readAll,readPracownikId, updateZamowienie, deleteZamowienie };
+export default { createZamowienie, readZamowienie, readAll,readPracownikId,readStolikId, updateZamowienie, deleteZamowienie };
