@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import { number } from 'joi';
 import mongoose from 'mongoose';
 import Produkt from '../models/Produkt';
 
@@ -29,6 +30,13 @@ const readAll = (req: Request, res: Response, next: NextFunction) => {
         .catch((error) => res.status(500).json({ error }));
 };
 
+const readShopList = (req: Request, res: Response, next: NextFunction) => {
+
+    return Produkt.find({ilosc:{$lte:2}})
+        .then((produkt) => res.status(200).json({ produkt }))
+       
+        .catch((error) => res.status(500).json({ error }));
+};
 const readAllButSorted = (req: Request, res: Response, next: NextFunction) => {
     return Produkt.find().sort('nazwa')
         .then((produkt) => res.status(200).json({ produkt }))
@@ -61,4 +69,4 @@ const deleteProdukt = (req: Request, res: Response, next: NextFunction) => {
         .catch((error) => res.status(500).json({ error }));
 };
 
-export default { createProdukt, readProdukt, readAll,readAllButSorted ,updateProdukt, deleteProdukt };
+export default { createProdukt, readProdukt, readAll,readAllButSorted,readShopList ,updateProdukt, deleteProdukt };
